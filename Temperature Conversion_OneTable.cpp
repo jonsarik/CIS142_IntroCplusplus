@@ -40,7 +40,6 @@ void print_intro()
 // Calculate and display conversion table
 void print_chart()
 {
-	string column1, column2;
 	cout << endl;
 	cout << fixed << showpoint << setprecision(1);
 	cout << setw(12) << "Fahrenheit" << setw(9) << "Celsius"
@@ -50,6 +49,8 @@ void print_chart()
 		<< setw(3) << "||"
 		<< setw(9) << "Celsius" << setw(12) << "Fahrenheit"
 		<< setw(9) << "Celsius" << setw(12) << "Fahrenheit" << endl;
+	cout << "--------------------------------------------------------------------------------------"
+		<< "-------------------------------------------" << endl;
 
 	int tally2 = FAHR_MIN + NUM_ROWS,		// Control 2nd Fahrenheit column
 		tally3 = FAHR_MIN + NUM_ROWS * 2,	// Control 3rd Fahrenheit column
@@ -122,6 +123,8 @@ void print_chart()
 		cel_tally++;
 		cel_tally2++;
 	}
+	cout << "--------------------------------------------------------------------------------------"
+		<< "-------------------------------------------" << endl;
 
 
 }
