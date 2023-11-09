@@ -64,20 +64,34 @@ void print_chart()
 		// 2nd column of Fahrenheit conversions
 		for (int fahrenheit2 = FAHR_MIN + NUM_ROWS; fahrenheit2 <= FAHR_MIN + NUM_ROWS * 2; fahrenheit2++)
 		{
+			if (fahrenheit2 != tally2)
+				continue;
+
 			// 3rd column of Fahrenheit conversions
 			for (int fahrenheit3 = FAHR_MIN + NUM_ROWS * 2; fahrenheit3 <= FAHR_MIN + NUM_ROWS * 3; fahrenheit3++)
 			{
+				if (fahrenheit3 != tally3)
+					continue;
+				
 				// 1st column of Celsius conversions
 				for (int celsius = CEL_MIN; celsius < NUM_ROWS; celsius++)
 				{
+					if (celsius != cel_tally)
+						continue;
+					
 					// 2nd column of Celsius conversions
 					for (int celsius2 = NUM_ROWS; celsius2 <= CEL_MAX; celsius2++)
 					{
+						if (celsius2 != cel_tally2)
+							continue;
+						
 						// 4th column of Fahrenheit conversions
 						for (int fahrenheit4 = FAHR_MIN + NUM_ROWS * 3; fahrenheit4 <= FAHR_MAX; fahrenheit4++)
 						{
-							if (celsius == cel_tally and celsius2 == cel_tally2 and fahrenheit2 == tally2 and fahrenheit3 == tally3 and fahrenheit4 == tally4)
-								cout << setw(8) << fahrenheit << setw(11) << convert_to_celsius(fahrenheit)
+							if (fahrenheit4 != tally4)
+								continue;
+							
+							cout << setw(8) << fahrenheit << setw(11) << convert_to_celsius(fahrenheit)
 								<< setw(10) << fahrenheit2 << setw(11) << convert_to_celsius(fahrenheit2)
 								<< setw(10) << fahrenheit3 << setw(11) << convert_to_celsius(fahrenheit3)
 								<< setw(10) << fahrenheit4 << setw(12) << convert_to_celsius(fahrenheit4)
@@ -88,32 +102,24 @@ void print_chart()
 						}
 						// Continue printing when final column for Fahrenheit reaches max
 						if (tally4 > FAHR_MAX)
-						{
-							if (celsius == cel_tally and celsius2 == cel_tally2 and fahrenheit2 == tally2 and fahrenheit3 == tally3)
-								cout << setw(8) << fahrenheit << setw(11) << convert_to_celsius(fahrenheit)
+							cout << setw(8) << fahrenheit << setw(11) << convert_to_celsius(fahrenheit)
 								<< setw(10) << fahrenheit2 << setw(11) << convert_to_celsius(fahrenheit2)
 								<< setw(10) << fahrenheit3 << setw(11) << convert_to_celsius(fahrenheit3)
 								<< "\t\t\t"
 								<< "     ||"
 								<< setw(6) << celsius << setw(12) << convert_to_fahrenheit(celsius) << "\t"
 								<< setw(3) << celsius2 << setw(11) << convert_to_fahrenheit(celsius2) << endl;
-						}
-						{
-
-						}
+						
 					}
 					// Continue printing when final columns for Celsius and Fahrenheit reach max
 					if (cel_tally2 > CEL_MAX)
-					{
-						if (celsius == cel_tally and fahrenheit2 == tally2 and fahrenheit3 == tally3)
-							cout << setw(8) << fahrenheit << setw(11) << convert_to_celsius(fahrenheit)
+						cout << setw(8) << fahrenheit << setw(11) << convert_to_celsius(fahrenheit)
 							<< setw(10) << fahrenheit2 << setw(11) << convert_to_celsius(fahrenheit2)
 							<< setw(10) << fahrenheit3 << setw(11) << convert_to_celsius(fahrenheit3)
 							<< "\t\t\t"
 							<< "     ||"
 							<< setw(6) << celsius << setw(12) << convert_to_fahrenheit(celsius) << "\t"
-							<< endl;
-					}
+							<< endl;					
 				}
 			}
 		}
