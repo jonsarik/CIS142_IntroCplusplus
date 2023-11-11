@@ -6,32 +6,37 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <string>
 using namespace std;
 
 void print_intro();
-double get_leg1();
-double get_leg2();
-double get_hypot(double sideA, double sideB);
+double get_leg(string);
+double get_hypot(double, double);
 void exit_program();
 
 int main()
 {
     double leg1, leg2, hypotenuse;
-    print_intro();          // Program description
+    string first = "first",
+        second = "second";
+    
 
-    leg1 = get_leg1();      // Get first leg
+    leg1 = get_leg(first);          // Get first leg of triangle
     while (leg1)
     {
-        leg2 = get_leg2();   // Get second leg
+        leg2 = get_leg(second);     // Get second leg of triangle
         cout << endl;
-        // Calculate and return the result
+        
+        // Get and display the hypotenuse
         hypotenuse = get_hypot(leg1, leg2);
         cout << "The length of the hypotenuse is " << hypotenuse << endl;
         cout << "-------------------------------------" << endl;
 
-        // More triangles?
-        cout << "\nRun again?";
-        leg1 = get_leg1();
+        // More calculations?
+        cout << "\nPress Enter to continue. ";
+        cin.get();
+        cin.get();
+        leg1 = get_leg(first);
     }
     exit_program();
     return 0;
@@ -40,6 +45,7 @@ int main()
 // Explain purpose of program
 void print_intro()
 {
+    system("cls");
     cout << endl <<
         "+===================================================+" << endl <<
         "| This program calculates the hypotenuse of a right |" << endl <<
@@ -47,37 +53,29 @@ void print_intro()
         "+===================================================+" << endl;
 }
 
-// Get and validate the first leg
-double get_leg1()
+// Get and validate triangle leg
+double get_leg(string leg)
 {
-    double sideA;
-    cout << "\nEnter the length of the first leg"
-        << "\nof the triangle, or 0 to exit: ";
-    cin >> sideA;
-    while (sideA < 0)
+    double side;
+    if (leg == "first")
+    {
+        print_intro();                  // Program description
+        cout << "\nEnter the length of the " << leg << " leg"
+            << "\nof the triangle, or 0 to exit: ";
+    }
+        
+    else
+        cout << "\nEnter the length of the " << leg << " leg"
+        << "\nof the triangle: ";    
+    cin >> side;
+    while (side < 0)
     {
         cout << "Please enter a valid number: ";
-        cin >> sideA;
+        cin >> side;
     }
-    return sideA;
+    return side;
 }
 
-// Get and validate second leg
-double get_leg2()
-{
-    double sideB;
-    cout << "\nEnter the length of the second leg"
-        "\nof the triangle: ";
-    cin >> sideB;
-    while (sideB < 0)
-    {
-        cout << "Please enter a valid number: ";
-        cin >> sideB;
-    }
-    return sideB;
-}
-
-// Calculate the hypotenuse using Pythagorean theorem
 double get_hypot(double sideA, double sideB)
 {
     cout << fixed << showpoint << setprecision(2);
